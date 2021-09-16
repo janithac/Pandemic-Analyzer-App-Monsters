@@ -17,8 +17,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="ht">
+         Pandemic Analyzer
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -26,9 +26,19 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+// const theme = createTheme();
 
-export default function SignUp() {
+const themeDark = createTheme({
+  palette: {
+    background: {
+      default: "#222222"
+    },
+    text: {
+      primary: "#ffffff"
+    }
+  }
+});
+export default function LogIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -40,8 +50,10 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+    
+ 
+    <ThemeProvider theme={themeDark}>
+      <Container  component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -55,7 +67,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Sign Up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -102,10 +114,27 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name=" confirm password"
+                  label="Confirm Password"
+                  type="password"
+                  id="confirm password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="I agree to the terms and  conditions"
                 />
+          
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Forget Password
+                </Link>
               </Grid>
             </Grid>
             <Button
@@ -119,7 +148,7 @@ export default function SignUp() {
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                  Already have an account? Sign In
                 </Link>
               </Grid>
             </Grid>
@@ -128,5 +157,6 @@ export default function SignUp() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+   
   );
 }
